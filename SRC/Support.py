@@ -39,67 +39,55 @@ title_mapping = {"employeenumber": "employee_number",
                 "salary": "annual_salary",
                 "roledepartament": "role_department"}
 
-#COLUMN REORDER:
-
-
-
-
-new_order_columns: ['employee_number', 
-                   'gender', 
-                   'birth_year', 
-                   'age', 
-                   'marital_status',
-                   'job_level', 
-                    'over_time', 
-                    'perf_rate',
-                    'stock_opt_level', 
-                    'traning_times_last_year', 
-                    'year_at_comp', 
-                    'year_current_role', 
-                    'year_last_promotion',
-                    'year_current_mngr',
-                    'education_scale',
-                    'education',
-                    'monthly_rate',
-                    'perc_salary_hike', 
-                    'annual_salary',
-                    'env_sat_rate',
-                    'job_involvement',
-                    'job_sat_rate',
-                    'relationship_sat_rate',
-                    'work_life_balance',
-                    'columns_emp_bgd']
 
 #CATEGORIES: 
 
-columns_personal =   ['employee_number', 
-                   'gender', 
-                   'birth_year', 
-                   'age', 
-                   'marital_status']
+columns_personal =  ['employee_number', 
+                    'gender', 
+                    'birth_year', 
+                    'age', 
+                    'marital_status',
+                    'dist_home']
 
-columns_job =   ['job_level', 
-               'over_time', 
-               'perf_rate',
-               'stock_opt_level', 
-               'traning_times_last_year', 
-               'year_at_comp', 
-               'year_current_role', 
-               'year_last_promotion',
-               'year_current_mngr']
+columns_job =   ['job_title',
+                'department',
+                'terminated',
+                'year_at_comp',
+                'year_current_role',
+                'standard_hours',
+                'remote',
+                'business_travel',
+                'over_time', 
+                'job_level', 
+                'stock_opt_level', 
+                'traning_times_last_year', 
+                'perf_rate',
+                'year_last_promotion',
+                'year_current_mngr']
 
-columns_education = ['education_scale',
-                     'education']
+columns_education = ['education',
+                    'education_scale']
 
 
+columns_income =    ['annual_salary',
+                    'monthly_income',
+                    'daily_rate',
+                    'hourly_rate',
+                    'monthly_rate',
+                    'perc_salary_hike']
 
-columns_income = ['monthly_rate',
-                  'perc_salary_hike', 
-                  'annual_salary']
-
-columns_satisfaction = ['env_sat_rate',
+columns_satisfaction =  ['env_sat_rate',
                         'job_involvement',
                         'job_sat_rate',
                         'relationship_sat_rate',
-                        'work_life_balance',
-                        'columns_emp_bgd']
+                        'work_life_balance']
+
+columns_emp_bgd =   ['num_comp_worked',
+                    'tot_working_year']
+
+#COLUMN REORDER:
+
+def columnreorder (dataframe):
+    new_order_columns = []
+    new_order_columns.append(columns_personal,columns_job,columns_education,columns_income,columns_satisfaction,columns_emp_bgd)
+    dataframe = dataframe[new_order_columns]
